@@ -33,7 +33,7 @@ public class MethodOverRiding {
 	}
 }
 // method over riding is a technique to implememt dynamic polymorphism 
-//this can be acheived by same name and signature int he base class as well as in the derived class
+//this can be acheived by same name and signature in the base class as well as in the derived class
 //method signature involves return type, method name and parameters( type, number and arrangement of parameters)
 
 

@@ -38,7 +38,31 @@ public class CreditCardPayment extends RRPaymentServices {
 	
 	public void payBill(double amount)
 	{
-		
+		paymentID="C1001";
+		if (amount==getBalance())
+		{
+			System.out.println("Customer ID			:"+getCustomerId());
+			System.out.println("Payment ID			:"+paymentID);
+			System.out.println("Previous due		:"+getBalance());
+			System.out.println("REmaining due		:0");
+			System.out.println("Cash back wallet balance:0");
+		}
+		else if (amount>getBalance())
+		{
+			System.out.println("Customer ID			:"+getCustomerId());
+			System.out.println("Payment ID			:"+paymentID);
+			System.out.println("Previous due		:"+getBalance());
+			System.out.println("REmaining due		:0");
+			System.out.println("Cash back wallet balance:"+(amount-getBalance()));
+		}
+		else
+		{
+			System.out.println("Customer ID			:"+getCustomerId());
+			System.out.println("Payment ID			:"+paymentID);
+			System.out.println("Previous due		:"+getBalance());
+			System.out.println("REmaining due		:"+(getBalance()-amount));
+			System.out.println("Cash back wallet balance:0");
+		}
 	}
 	
 	

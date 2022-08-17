@@ -27,15 +27,36 @@ public void setRegistrationFee(double registrationFee) {
 	{
 		this.name=name;
 		this.nameOfEvent=nameOfEvent;
-		
 	}
+	
 	
 	public void registerEvent()
 	{
+		if (nameOfEvent.equalsIgnoreCase("shakealeg"))
+		{	
+			registrationFee=100;
+		}
+		else if (nameOfEvent.equalsIgnoreCase("sing&win"))
+		{	
+			registrationFee=150;
+		}
+		else if (nameOfEvent.equalsIgnoreCase("actathon"))
+		{	
+			registrationFee=70;
+		}
+		else if (nameOfEvent.equalsIgnoreCase("playaway"))
+		{	
+			registrationFee=130;
+		}
 		
 	}
 	public static void main (String args[])
 	{
+		TeamEventRegistration team= new TeamEventRegistration("aura","shakealeg",1,5);
+		team.registerEvent();
+		
+		SingleEventRegistration single = new SingleEventRegistration("jenny","sing&win",2);
+		single.registerEvent();
 		
 	}
 }

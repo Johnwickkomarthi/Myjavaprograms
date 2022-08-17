@@ -21,12 +21,22 @@ public String getPaymentID() {
 }
 public void setPaymentID(String paymentID) {
 	this.paymentID = paymentID;
+	
 }
 
 
 public void payBill(double amount)
 {
+	paymentID="S1001";
 	
+	if (amount==getBalance())
+	{
+		System.out.println("Congratulations! Your payment of"+amount+"is successful with payment Id"+paymentID);
+	}
+	else if (amount>getBalance())
+		System.out.println("Insufficient amount. Please try again.");
+	else if (amount<getBalance())
+		System.out.println("Entered excess amount. Please try again.");
 }
 	
 
