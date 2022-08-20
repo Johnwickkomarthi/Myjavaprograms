@@ -17,7 +17,7 @@ public void divide(double a, int b)
 		//case2
 		c.divide(10.0, 2);
 		//case3
-		c.divide(10,2); //c.divide((double)10,2); if we use this there is no error.
+		c.divide (10,2); //c.divide((double)10,2); if we use this there is no error.
 	}
 
 }
