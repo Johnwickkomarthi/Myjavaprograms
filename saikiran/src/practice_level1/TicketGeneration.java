@@ -1,4 +1,5 @@
 package practice_level1;
+import java.util.*;
 /*Given a list of strings, each string containing the ticket information of passengers, write a program to print the ticket ID of all the passengers.
 
 Input Format:
@@ -21,7 +22,11 @@ public class TicketGeneration {
 
 	public static void main(String[] args) {
 		
+		    
+		  }
+		
+	
 
 	}
 
-}
+
