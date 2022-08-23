@@ -4,7 +4,8 @@ public abstract class RRPaymentServices {
 private double balance;
 private int customerId;
 
-public abstract void payBill(double amount);
+public abstract void payBill(double amount);// this is abstract method
+
 public double getBalance() {
 	return balance;
 }
