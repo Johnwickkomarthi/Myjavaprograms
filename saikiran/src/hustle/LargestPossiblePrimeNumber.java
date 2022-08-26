@@ -7,6 +7,7 @@ public class LargestPossiblePrimeNumber {
 		    String n=input.nextLine();
 		    int[] arr=new int[n.length()];
 		    int num=Integer.parseInt(n);
+		    long []primearr=new long [n.length()];
 		    int i=n.length()-1;
 		    while(i>=0)
 		    {
@@ -15,27 +16,48 @@ public class LargestPossiblePrimeNumber {
 		      i--;
 		    }
 		    Arrays.sort(arr);
-		    int temp=arrtoint(arr);
-		    
-		    if(checkprime(temp))
+		    primearr[0]=arrtoint(arr);
+		    int p=1;
+		    while(p<n.length())
+		    {int last = arr[0];
+            for (int a = 0; a < n.length() - 1; a++) {
+                arr[a] = arr[a + 1];
+                
+            }
+            arr[n.length() - 1] = last;
+            primearr[p]=arrtoint(arr);
+		    p++;
+		    }
+		    boolean prime = false;
+		    for (int j=n.length()-1;j>=0;j--)
+		    {System.out.println(primearr[j]+"each combination");
+		    if(checkprime(primearr[j]))
 		    {
-		    	System.out.println(temp);
+		    	
+		    	System.out.println(primearr[j]);
+		    	prime=true;
+		    	//break;
 		    }
 		    
+		    }
+		    if (prime=false)
+		    {
+		    	System.out.print(-1);
+		    }
 		    
 	}
-	public static boolean checkprime(int n)
+	public static boolean checkprime(long primearr)
 	{
 	  int count=0;
-	  for (int i=1;i<=n;i++)
+	  for (int i=2;i<=primearr/2;i++)
 	  {
-	    if (n%i==0)
+	    if (primearr%i==0)
 	    {
 	      count++;
 	    }
 	    
 	  }
-	  if (count==2)
+	  if (count==0)
 	  return true;
 	  else 
 	  return false;
@@ -43,7 +65,7 @@ public class LargestPossiblePrimeNumber {
 	
 	
 	
-	public static int arrtoint(int [] arr)
+	public static long arrtoint(int [] arr)
 	{
 		int num=0;
 		for (int i=0;i<arr.length;i++)
