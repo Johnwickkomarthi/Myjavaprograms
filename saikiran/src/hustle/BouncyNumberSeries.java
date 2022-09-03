@@ -1,12 +1,35 @@
 package hustle;
-
+import java.util.Scanner;
 public class BouncyNumberSeries {
 
 	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
 		
+		long num=input.nextLong();
+		int x=100;
+		
+		while(x<=num)
+		{
+			String str=String.valueOf(x);
+			int arr[]= new int [str.length()];
+			
+			
+		}
+	}
+	
+	
+	public static long arrtoint(int [] arr)
+	{
+		int num=0;
+		for (int i=0;i<arr.length;i++)
+		{
+			num=num*10+arr[i];
+		}
+		return num;
+	}
 	}
 
-}
+
 
 /*Bouncy number is a positive integer which has its digits un-ordered. 14752 is a bouncy number where 95321 is not a bouncy number. 
 

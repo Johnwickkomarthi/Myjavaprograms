@@ -35,7 +35,7 @@ public class BeautifulArray {
 			  }
 		  }
 		  
-		 System.out.println(count);
+		 
 			
 			  for (int i=0;i<l;i++)
 			  { if(l>1)
@@ -43,14 +43,14 @@ public class BeautifulArray {
 				  if (count==l || count2>=1) 
 			 
 				  { 
-					  System.out.println("1st if");
+					  
 					  condition =false; 
 					  break;
 				  }
 			  }
 			  if (1>=arr[i] && arr[i]>=n) 
 			  { 
-				  System.out.println("2nd if");
+				  
 				  condition =false; 
 				  break;
 			  }
