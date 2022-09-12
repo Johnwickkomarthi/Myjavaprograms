@@ -75,3 +75,48 @@ Time Complexity: O(n), As two traversal of the array, is needed, so the time com
 Auxiliary Space: O(1), As no extra space is required
 ====================================================================================================
 
+
+====================================================================================================
+Majority Element Using Sorting:
+
+Illustration:
+
+arr[] = {3, 4, 3, 2, 4, 4, 4, 4}, n = 8
+
+Array after sorting => arr[] = {2, 3, 3, 4, 4, 4, 4, 4}, count = 1
+
+At i = 1:
+
+arr[i] != arr[i – 1] => arr[1] != arr[0]
+count is not greater than n/2, therefore reinitialise count with, count = 1
+At i = 2:
+
+arr[i] == arr[i – 1] => arr[2] == arr[1] = 3
+count = count + 1 = 1 + 1 = 2
+At i = 3
+
+arr[i] != arr[i – 1] => arr[3] != arr[2]
+count is not greater than n/2, therefore reinitialise count with, count = 1
+At i = 4
+
+arr[i] == arr[i – 1] => arr[4] == arr[3] = 4
+count = count + 1 = 1 + 1 = 2
+At i = 5
+
+arr[i] == arr[i – 1] => arr[5] == arr[4] = 4
+count = count + 1 = 2 + 1 = 3
+At i = 6
+
+arr[i] == arr[i – 1] => arr[6] == arr[5] = 4
+count = count + 1 = 3 + 1 = 4
+At i = 7
+
+arr[i] == arr[i – 1] => arr[7] == arr[6] = 4
+count = count + 1 = 4 + 1 = 5
+Therefore, the count of 4 is now greater than n/2.
+Hence, 4 is the majority element.
+
+
+Time Complexity: O(nlogn), Sorting requires O(n log n) time complexity.
+Auxiliary Space: O(1), As no extra space is required.
+=================================================================================================
