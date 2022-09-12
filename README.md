@@ -72,6 +72,6 @@ arr[maj_index] is 4
 
 
 Time Complexity: O(n), As two traversal of the array, is needed, so the time complexity is linear.
-Auxiliary Space: O(1), As no extra space is required.
+Auxiliary Space: O(1), As no extra space is required
 ====================================================================================================
 
