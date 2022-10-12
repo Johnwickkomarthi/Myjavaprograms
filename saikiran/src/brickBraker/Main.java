@@ -14,5 +14,4 @@ public class Main {
 		obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		obj.add(gamePlay);
 	}
-
 }
