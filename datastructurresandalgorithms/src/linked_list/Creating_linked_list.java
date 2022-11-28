@@ -81,22 +81,138 @@ class LinkedList{
 			}
 		return null;
 	}
-}
+	public void insert(String data,String dataBefore){
+		Node node=new Node(data);
+		// check if the list is empty or not
+
+		if (this.head==null)
+			this.head=this.tail=node;
+		else{
+			//find the node which the data has to be inserted 
+			Node nodeBefore=this.find(dataBefore);
+			if (nodeBefore!=null){
+				// insert the new node after the node before
+				node.setNext(nodeBefore.getNext());
+				nodeBefore.setNext(node);
+				// if the nodeBefore is tail node then make the current node as tail
+				if (nodeBefore==this.tail)
+					this.tail=node;
+			}
+			else
+				System.out.println("Node not found");
+		}
+	}
+	public int findPostion(String data) {
+		int index=0;
+		Node temp=this.head;
+		while(temp!=null) {
+			if(temp.getData().equals(data))
+				return index;
+			index++;
+			temp=temp.getNext();
+		}
+		return index;
+	}
+	
+	public void delete(String data){
+		// check if the list is empty or not
+		if (this.head==null)
+			System.out.println("list is empty");
+		else{
+			// find the node to be deleted 
+			Node node=this.find(data);
+			// if the node is not found
+			if (node==null)
+				System.out.println("node is not found");
+			// if node to be deleted is head node
+			else if(node==this.head){
+				this.head=this.head.getNext();
+				node.setNext(null);
+				// if node to be deleted is tail node
+				if (node==this.tail)
+					tail=null;
+			}
+			else {
+				//traverse to the node present before the node to be deleted
+				Node nodeBefore=null;
+				Node temp=this.head;
+				while(temp!=null){
+					if (temp.getNext()==node){
+						nodeBefore=temp;
+						break;
+					}
+					temp=temp.getNext();
+				}
+				// Remove the node
+				nodeBefore.setNext(node.getNext());
+				// if the node to be deleted is the tail node
+				//then make the previous node as tail
+				if(node==this.tail)
+					this.tail=nodeBefore;
+				node.setNext(null);
+			}
+		
+		}
+	}
+	public void shiftLeft(LinkedList list, int n) {
+		while(n!=0) {		
+			Node temp=this.head;
+			/**
+			 * store the head in a temporary node and make it tail node, set the 2nd node as head and temporary node as tail and eliminate the connection between the 1st and 2nd node
+			 */
+			head=head.getNext();
+			tail.setNext(temp);
+			tail=tail.getNext();
+			tail.setNext(null);
+			n--;
+		}
+		while(head!=null) {
+			System.out.println(head.getData());
+			head=head.getNext();
+		}
+	}
+	public void shiftRight(LinkedList list, int n) {
+		while(n!=0) {
+			/**
+			 * first we need to find the node before the tail node to eliminate the connection between them and then make tail node as head and the node before the tail node as tail node.
+			 */
+			Node nodeBefore=new Node(tail.getData());
+			Node temp=this.head;
+			while(temp!=null){
+				if (nodeBefore.getData().equals(temp.getNext().getData())){
+					nodeBefore=temp;
+					break;
+				}
+				temp=temp.getNext();
+			}
+			tail.setNext(head);
+			head=tail;
+			tail=nodeBefore;
+			tail.setNext(null);
+			n--;
+		}
+			while(head!=null) {
+				System.out.println(head.getData());
+				head=head.getNext();
+			}
+		
+		
+	}
+	
+}  
+//  	1->2->3->4->5
 public class Creating_linked_list {
 
 	public static void main(String[] args) {
 		LinkedList list= new LinkedList();
-		list.addAtEnd("Milan");
-		list.addAtEnd("komathi");
-		list.addAtEnd("narasannapeta");
-		list.addAtEnd("tekkali");
-		list.addAtEnd("palasa");
-		list.addAtBeginning("kjsf");
+		list.addAtEnd("ABC");
+		list.addAtEnd("DEF");
+		list.addAtEnd("GHI");
+		list.addAtEnd("JKL");
+		list.addAtEnd("MNO");
 		list.display();
-		if (list.find("komathi")!=null)
-			System.out.println("node found");
-		else
-			System.out.println("node not found");
+		
+		
 	}
 
 }
