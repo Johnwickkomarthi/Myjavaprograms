@@ -3,12 +3,6 @@ import java.io.*;
 public class Temp_array_method {
 
 	
-	/*package whatever //do not write package name here */
-
-
-
-
-	// Fuction to rotate array
 	static void Rotate(int arr[], int d, int n)
 	{
 		// Storing rotated version of array
@@ -39,7 +33,7 @@ public class Temp_array_method {
 		}
 	}
 
-	// Function to print elements of array
+	
 	static void PrintTheArray(int arr[], int n)
 	{
 		for (int i = 0; i < n; i++) {
@@ -51,7 +45,7 @@ public class Temp_array_method {
 			int N = arr.length;
 			int d = 2;
 
-			// Function calling
+		
 			Rotate(arr, d, N);
 			PrintTheArray(arr, N);
 		}
