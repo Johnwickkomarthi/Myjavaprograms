@@ -22,7 +22,7 @@ class Node{
 	
 	
 }
-class LinkedList{
+class LinkedList1{
 	private Node head;
 	private Node tail;
 	public Node getHead() {
@@ -154,7 +154,7 @@ class LinkedList{
 		
 		}
 	}
-	public void shiftLeft(LinkedList list, int n) {
+	public void shiftLeft(LinkedList1 list, int n) {
 		while(n!=0) {		
 			Node temp=this.head;
 			/**
@@ -171,7 +171,7 @@ class LinkedList{
 			head=head.getNext();
 		}
 	}
-	public void shiftRight(LinkedList list, int n) {
+	public void shiftRight(LinkedList1 list, int n) {
 		while(n!=0) {
 			/**
 			 * first we need to find the node before the tail node to eliminate the connection between them and then make tail node as head and the node before the tail node as tail node.
@@ -204,7 +204,7 @@ class LinkedList{
 public class Creating_linked_list {
 
 	public static void main(String[] args) {
-		LinkedList list= new LinkedList();
+		LinkedList1 list= new LinkedList1();
 		list.addAtEnd("ABC");
 		list.addAtEnd("DEF");
 		list.addAtEnd("GHI");
