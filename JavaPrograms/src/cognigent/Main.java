@@ -1,35 +1,28 @@
 package cognigent;
 import java.util.*;
+import java.io.*;
 class Main{
-	public static void main(String[]a) {
-		List <Integer>list=new LinkedList<Integer>();
-		System.out.println(getMinimumTrips(list));
+	public static void main(String[]a) throws Exception {
+		int [][]arr={{1,2,3},{1,4,6}};
+		String s="";
+		s.matches(s);
+		System.out.println(minCost(arr,2));
+		
 	}
-	public static int getMinimumTrips(List<Integer> weights){
-        HashMap<Integer, Integer> countMap = new HashMap<>();
-        HashSet<Integer> set = new HashSet<>();
-        for (int i : weights) {
-            if (!set.add(i)) {
-                return -1;
+	static int minCost(int [][] colors, int N){
+        //Write your code here
+        int sameColor=-1,sum=0;
+        for (int i=0;i<colors.length;i++){
+            int min=Integer.MAX_VALUE;
+            for (int j=0;j<3;j++){
+                if(min>colors[i][j] && j!=sameColor){
+                    min=colors[i][j];
+                    sameColor=j;
+                }
+                
             }
+            sum+=min;
         }
-        for (int i : weights) {
-            if (countMap.containsKey(i)) {
-                countMap.put(i, countMap.get(i) + 1);
-            } else {
-                countMap.put(i, 1);
-            }
-        }
-
-        int twiceCount = 0;
-        int thriceCount = 0;
-        for (int count : countMap.values()) {
-            if (count == 2) {
-                twiceCount++;
-            } else if (count == 3) {
-                thriceCount++;
-            }
-        }
-    return twiceCount+thriceCount;
+        return sum;
     }
 }

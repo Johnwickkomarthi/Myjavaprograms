@@ -7,6 +7,9 @@ class Node{
 	public Node(String data) {
 		this.data=data;
 	}
+	
+	
+	
 	public String getData() {
 		return this.data;
 	}
@@ -20,8 +23,11 @@ class Node{
 		this.next = node;
 	}
 	
-	
 }
+
+
+
+
 class LinkedList1{
 	private Node head;
 	private Node tail;
@@ -205,11 +211,8 @@ public class Creating_linked_list {
 
 	public static void main(String[] args) {
 		LinkedList1 list= new LinkedList1();
-		list.addAtEnd("ABC");
-		list.addAtEnd("DEF");
-		list.addAtEnd("GHI");
-		list.addAtEnd("JKL");
-		list.addAtEnd("MNO");
+		list.addAtEnd("a");
+		list.addAtEnd("b");
 		list.display();
 		
 		
