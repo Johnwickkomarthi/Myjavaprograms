@@ -1,0 +1,45 @@
+package com.temp.rough;
+import java.util.*;
+public class Student {
+	private String name;
+	private int rollNumber;
+	public Student(String name, int rollNumber) {
+		super();
+		this.name = name;
+		this.rollNumber = rollNumber;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getRollNumber() {
+		return rollNumber;
+	}
+	public void setRollNumber(int rollNumber) {
+		this.rollNumber = rollNumber;
+	}
+	public String toString() {
+		return this.name;
+	}
+	public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Student other = (Student) obj;
+        return rollNumber == other.rollNumber;
+    }
+	 public int hashCode() {
+	        return rollNumber;
+	    }
+	
+	public static void main(String [] args) {
+		HashSet<Student> students=new HashSet<Student>();
+		students.add(new Student("Modi",101));
+		students.add(new Student("sai",101));
+		for (Student student : students) {
+            System.out.println("Roll Number: " + student.getRollNumber() + ", Name: " + student.getName());
+        }
+	}
+	
+}
