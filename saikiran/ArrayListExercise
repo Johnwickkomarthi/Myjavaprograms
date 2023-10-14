@@ -1,0 +1,23 @@
+package com.temp.rough;
+import java.util.*;
+public class LinkedListExercise {
+
+	public static void main(String[] args) {
+		ArrayList<String> list= new ArrayList<String>();
+		list.add("Infosys");
+		list.add("Mysore");
+		list.add("Hyderabad");
+		list.add("Pocharam");
+		
+		ListIterator iterator=list.listIterator();
+		
+		while(iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
+		while(iterator.hasPrevious()) {
+			System.out.println(iterator.previous());
+		}
+
+	}
+
+}
