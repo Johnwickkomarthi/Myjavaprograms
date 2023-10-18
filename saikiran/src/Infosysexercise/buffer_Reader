@@ -1,0 +1,42 @@
+package com.basics.practice;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+public class MarksCalculator2 {
+    public static void main(String[] args) {
+        String term1FileName = "C:\\TGH_OFFLINE\\temp\\java practice\\JohnTerm1.txt";
+        String term2FileName = "C:\\TGH_OFFLINE\\temp\\java practice\\JohnTerm2.txt";
+        String outputFileName = "C:\\TGH_OFFLINE\\temp\\java practice\\JohnTotal.txt";
+        try {
+            BufferedReader term1Reader = new BufferedReader(new FileReader(term1FileName));
+            BufferedReader term2Reader = new BufferedReader(new FileReader(term2FileName));
+            PrintWriter writer = new PrintWriter(new FileWriter(outputFileName));
+
+            String lineTerm1, lineTerm2;
+            while ((lineTerm1 = term1Reader.readLine()) != null && (lineTerm2 = term2Reader.readLine()) != null) {
+                // Assuming the file format is: subjectName markTerm1 markTerm2
+                String[] term1Data = lineTerm1.split(" ");
+                String[] term2Data = lineTerm2.split(" ");
+
+                String subjectName = term1Data[0]; // Assuming subject name is the first element in each line
+                int markTerm1 = Integer.parseInt(term1Data[1]);
+                int markTerm2 = Integer.parseInt(term2Data[1]);
+
+                int totalMarks = markTerm1 + markTerm2;
+                writer.println(subjectName + " " + totalMarks);
+            }
+
+            // Close the readers and writer
+            term1Reader.close();
+            term2Reader.close();
+            writer.close();
+
+            System.out.println("Total marks for each subject have been calculated and saved in " + outputFileName);
+
+        } catch (IOException e) {
+            System.out.println("An error occurred while processing the files: " + e.getMessage());
+        }
+    }
+}
