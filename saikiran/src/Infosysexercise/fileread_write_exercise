@@ -1,0 +1,45 @@
+package com.basics.practice;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class MarksCalculator {
+
+    public static void main(String[] args) {
+    	 String term1FileName = "C:\\TGH_OFFLINE\\temp\\java practice\\JohnTerm1.txt";
+         String term2FileName = "C:\\TGH_OFFLINE\\temp\\java practice\\JohnTerm2.txt";
+         String outputFileName = "C:\\TGH_OFFLINE\\temp\\java practice\\JohnTotal.txt";
+
+         try (
+        		 Scanner term1Scanner = new Scanner(new FileReader(term1FileName));
+                 Scanner term2Scanner = new Scanner(new FileReader(term2FileName));
+                 PrintWriter writer = new PrintWriter(new FileWriter(outputFileName));
+             ) {
+        	 while (term1Scanner.hasNext() && term2Scanner.hasNext()) {
+                 String subjectName = term1Scanner.next();
+                 int markTerm1 = term1Scanner.nextInt();
+                 String subjectName2 = term2Scanner.next();
+                 int markTerm2 = term2Scanner.nextInt();
+
+                 int totalMarks = markTerm1 + markTerm2;
+                 writer.println(subjectName + " " + totalMarks);
+             }
+        	 term1Scanner.close();
+             term2Scanner.close();
+             writer.close();
+
+             System.out.println("Total marks for each subject have been calculated and saved in " + outputFileName);
+        	 
+             } catch (IOException e) {
+                 System.out.println("An error occurred while processing the files: " + e.getMessage());
+             }
+         }
+     }
+
+
+
+
+
