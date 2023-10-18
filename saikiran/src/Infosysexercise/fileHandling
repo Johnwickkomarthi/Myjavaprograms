@@ -1,0 +1,39 @@
+package com.basics.practice;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+import java.io.IOException;
+
+public class FileCombiner {
+
+    public static void main(String[] args) {
+        String input1FileName = "C:\\TGH_OFFLINE\\temp\\java practice\\JohnTerm1.txt";
+        String input2FileName = "C:\\TGH_OFFLINE\\temp\\java practice\\JohnTerm2.txt";
+        String outputFileName = "C:\\TGH_OFFLINE\\temp\\java practice\\output.txt";
+
+        try (
+            BufferedReader input1Reader = new BufferedReader(new FileReader(input1FileName));
+            BufferedReader input2Reader = new BufferedReader(new FileReader(input2FileName));
+            PrintWriter writer = new PrintWriter(new FileWriter(outputFileName))
+        ) {
+            String line;
+
+            // Read and write data from input1.txt
+            while ((line = input1Reader.readLine()) != null) {
+                writer.println(line);
+            }
+
+            // Read and write data from input2.txt
+            while ((line = input2Reader.readLine()) != null) {
+                writer.println(line);
+            }
+
+            System.out.println("Data from input1.txt and input2.txt has been combined and saved in output.txt.");
+
+        } catch (IOException e) {
+            System.out.println("An error occurred while processing the files: " + e.getMessage());
+        }
+    }
+}
