@@ -1,0 +1,29 @@
+package com.seraliastin.deseraliasation;
+import java.io.*;
+public class DeseralisationExercise {
+
+	public static void main(String[] args) {
+        try (
+        		ObjectInputStream johnterm1 = new ObjectInputStream(new FileInputStream("C:\\TGH_OFFLINE\\temp\\java practice\\se_de\\Johnterm1.dat"));
+        		ObjectInputStream johnterm2 = new ObjectInputStream(new FileInputStream("C:\\TGH_OFFLINE\\temp\\java practice\\se_de\\Johnterm2.dat"));
+        		
+        	) {
+            Term term1 = (Term) johnterm1.readObject();
+            double totalMarks=0;
+            
+            for(Mark mark : term1.getTermMarks()) {
+            	totalMarks+=mark.getMarks();
+            }
+            System.out.println(totalMarks);
+            Term term2 = (Term) johnterm2.readObject();
+            totalMarks=0;
+            for(Mark mark : term2.getTermMarks()) {
+            	totalMarks+=mark.getMarks();
+            }
+            System.out.println(totalMarks);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
