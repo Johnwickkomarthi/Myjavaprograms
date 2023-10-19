@@ -1,0 +1,59 @@
+package com.seraliastin.deseraliasation;
+import java.util.*;
+import java.io.*;
+public class Seraliasation_Exercise {
+
+	public static void main(String[] args) {
+		String term1FileName = "C:\\TGH_OFFLINE\\temp\\java practice\\JohnTerm1.txt";
+        String term2FileName = "C:\\TGH_OFFLINE\\temp\\java practice\\JohnTerm2.txt";
+        
+        
+        
+        List<Mark> marksList1= new ArrayList<Mark>();
+        List<Mark> marksList2= new ArrayList<Mark>();
+        
+        try (
+       		 	Scanner term1Scanner = new Scanner(new FileReader(term1FileName));
+                Scanner term2Scanner = new Scanner(new FileReader(term2FileName));
+            ) {
+       	 while (term1Scanner.hasNext() && term2Scanner.hasNext()) {
+                String subjectName = term1Scanner.next();
+                int markTerm1 = term1Scanner.nextInt();
+                marksList1.add(new Mark(subjectName,markTerm1));
+                
+                String subjectName2 = term2Scanner.next();
+                int markTerm2 = term2Scanner.nextInt();
+                marksList2.add(new Mark(subjectName2,markTerm2));
+            }
+       	 	term1Scanner.close();
+            term2Scanner.close();
+            
+
+       	 
+            } catch (IOException e) {
+                System.out.println("An error occurred while processing the files: " + e.getMessage());
+            }
+        
+	
+		Term term1= new Term("Term1","101",marksList1);
+		Term term2= new Term("Term2","102",marksList2);
+		
+		
+//		below code will Serialize the objects 
+		try (
+				ObjectOutputStream outputJohnterm1 = new ObjectOutputStream(new FileOutputStream("C:\\TGH_OFFLINE\\temp\\java practice\\se_de\\Johnterm1.dat"));
+				ObjectOutputStream outputJohnterm2 = new ObjectOutputStream(new FileOutputStream("C:\\TGH_OFFLINE\\temp\\java practice\\se_de\\Johnterm2.dat"));
+				
+				) {
+			outputJohnterm1.writeObject(term1);
+			System.out.println("Johnterm1.dat");
+			outputJohnterm2.writeObject(term2);
+            
+            System.out.println("Johnterm2.dat");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
+	}
+
+}
