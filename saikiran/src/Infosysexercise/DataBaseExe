@@ -1,0 +1,83 @@
+package com.jdbc.practice;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class DataBaseExe {
+	
+	public static void main(String [] args) {
+		String jdbcUrl="jdbc:mysql://localhost:3306/sfdc_sync";
+		String username="root";
+		String password="your passowrd";
+		try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
+            // Task 1: Create the Student table
+            String createTableSQL = "create table Student (Name varchar(24), RollNumber int, CourseName varchar(34), Score int)";
+            try (PreparedStatement createTableStatement = connection.prepareStatement(createTableSQL)) {
+                createTableStatement.executeUpdate();
+                System.out.println("Student table created successfully.");
+            } catch (SQLException ex) {
+                // Table already exists, ignore the exception
+            }
+
+            // Task 2: Insert 5 student records
+            String insertSQL = "insert into Student (Name, RollNumber, CourseName, Score) values (?, ?, ?, ?)";
+            try (PreparedStatement insertStatement = connection.prepareStatement(insertSQL)) {
+                // Insert 5 student records
+                insertStatement.setString(1, "Student1");
+                insertStatement.setInt(2, 1);
+                insertStatement.setString(3, "JDBC");
+                insertStatement.setInt(4, 70);
+                insertStatement.executeUpdate();
+
+                insertStatement.setString(1, "Student2");
+                insertStatement.setInt(2, 2);
+                insertStatement.setString(3, "JDBC");
+                insertStatement.setInt(4, 55);
+                insertStatement.executeUpdate();
+
+                insertStatement.setString(1, "Student3");
+                insertStatement.setInt(2, 3);
+                insertStatement.setString(3, "JDBC");
+                insertStatement.setInt(4, 80);
+                insertStatement.executeUpdate();
+
+                insertStatement.setString(1, "Student4");
+                insertStatement.setInt(2, 4);
+                insertStatement.setString(3, "JDBC");
+                insertStatement.setInt(4, 90);
+                insertStatement.executeUpdate();
+
+                insertStatement.setString(1, "Student5");
+                insertStatement.setInt(2, 5);
+                insertStatement.setString(3, "JDBC");
+                insertStatement.setInt(4, 65);
+                insertStatement.executeUpdate();
+
+                System.out.println("Records inserted successfully.");
+            } catch (SQLException ex) {
+                System.out.println("Error inserting records: " + ex.getMessage());
+            }
+
+            // Task 3: Retrieve and display students with score > 60%
+            String selectSQL = "select Name, RollNumber, CourseName, Score from Student where Score > 60";
+            try (PreparedStatement selectStatement = connection.prepareStatement(selectSQL);
+                 ResultSet resultSet = selectStatement.executeQuery()) {
+                System.out.println("Students who scored more than 60% in JDBC course:");
+                while (resultSet.next()) {
+                    String name = resultSet.getString("Name");
+                    int rollNumber = resultSet.getInt("RollNumber");
+                    String courseName = resultSet.getString("CourseName");
+                    int score = resultSet.getInt("Score");
+                    System.out.println("Name: " + name + ", Roll Number: " + rollNumber + ", Course: " + courseName + ", Score: " + score);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error retrieving records: " + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Database connection error: " + ex.getMessage());
+        }
+	}
+}
