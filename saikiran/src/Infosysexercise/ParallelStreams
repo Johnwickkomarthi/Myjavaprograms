@@ -1,0 +1,30 @@
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class ParallelStreamExample {
+    public static void main(String[] args) {
+        // Creating a list of integers from 1 to 1000
+        List<Integer> numbers = IntStream.rangeClosed(1, 1000).boxed().collect(Collectors.toList());
+
+        // Using Sequential Stream
+        long startTimeSequential = System.currentTimeMillis();
+        long countSequential = numbers.stream().filter(num -> num % 2 == 0).count();
+        long endTimeSequential = System.currentTimeMillis();
+        long timeTakenSequential = endTimeSequential - startTimeSequential;
+
+        System.out.println("Sequential Stream - Count of even numbers: " + countSequential);
+        System.out.println("Time taken (Sequential Stream): " + timeTakenSequential + " milliseconds");
+
+        // Using Parallel Stream
+        long startTimeParallel = System.currentTimeMillis();
+        long countParallel = numbers.parallelStream()
+                                   .filter(num -> num % 2 == 0) // Filter even numbers
+                                   .count();
+        long endTimeParallel = System.currentTimeMillis();
+        long timeTakenParallel = endTimeParallel - startTimeParallel;
+
+        System.out.println("Parallel Stream - Count of even numbers: " + countParallel);
+        System.out.println("Time taken (Parallel Stream): " + timeTakenParallel + " milliseconds");
+    }
+}
