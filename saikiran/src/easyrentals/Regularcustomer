@@ -1,0 +1,20 @@
+package com.easyRentals.customer;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Optional;
+
+import com.easyRentals.models.Bike;
+
+public class RegularCustomer extends Customer{
+	
+	public RegularCustomer(int id, String name, LocalDate dob, String custType, String gender, String contact,
+			Optional<String> email, ZoneId zone, String country) {
+		super(id, name, dob, custType, gender, contact, email, zone, country);
+		
+	}
+
+	public double calculateRentalPrice(Bike bike) {
+		return bike.getRentalPrice();
+	}
+}
