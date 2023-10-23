@@ -1,0 +1,18 @@
+package com.easyRentals.service;
+import java.util.HashSet;
+import com.easyRentals.dao.*;
+import com.easyRentals.models.*;
+public class BikeService {
+	
+	public HashSet<Bike> getBikeDetails(){
+		HashSet<Bike> set= new HashSet<Bike>();
+		DataUtil data=new DataUtil();
+		set.add(data.getBike1001());
+		set.add(data.getBike1002());
+		set.add(data.getBike1003());
+		set.add(data.getBike1004());
+		return set;
+		
+	}
+	
+}
