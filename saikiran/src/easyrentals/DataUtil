@@ -1,0 +1,27 @@
+package com.easyRentals.dao;
+
+import com.easyRentals.models.Bike;
+
+public class DataUtil {
+    private  Bike b1001 = new Bike(1001, "Hon: 1001", "CBR", 500, "Honda", null);
+    private  Bike b1002 = new Bike(1002, "Her: 1002", "CBZ", 800, "Hero", null);
+    private  Bike b1003 = new Bike(1003, "Enf: 1003", "bullet", 900, "enfield", null);
+    private  Bike b1004 = new Bike(1004, "Her: 1004", "Karizma", 700, "Hero", null);
+
+    // Public static methods to access the Bike objects
+    public  Bike getBike1001() {
+        return b1001;
+    }
+
+    public  Bike getBike1002() {
+        return b1002;
+    }
+
+    public  Bike getBike1003() {
+        return b1003;
+    }
+
+    public  Bike getBike1004() {
+        return b1004;
+    }
+}
