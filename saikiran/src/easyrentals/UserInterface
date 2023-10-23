@@ -1,0 +1,30 @@
+package com.easyRentals.ui
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Optional;
+
+import com.easyRentals.customer.Customer;
+import com.easyRentals.service.BikeService;
+public class UserInterface {
+
+	public static void main(String[] args) {
+		ZoneId zone = ZoneId.of("America/New_York");
+		Customer customer1 = new Customer(1, "Alice", LocalDate.of(1990, 5, 15), "Regular", "Female", "1234567890", Optional.of("alice@example.com"), zone, "USA");
+        Customer customer2 = new Customer(2, "Bob", LocalDate.of(1985, 8, 25), "Premium", "Male", "9876543210", Optional.empty(), zone, "UK");
+        Customer customer3 = new Customer(3, "Charlie", LocalDate.of(1988, 2, 10), "Regular", "Male", "2345678901", Optional.of("charlie@example.com"), zone, "Canada");
+        ArrayList<Customer> customerList= new ArrayList<Customer>();
+        customerList.add(customer3);
+        customerList.add(customer1);	
+        customerList.add(customer2);
+        Customer.getListOfCustomers(customerList);
+       
+        
+        
+        BikeService bikeServie= new BikeService();
+        System.out.println(bikeServie.getBikeDetails());
+        
+        
+	}
+
+}	
