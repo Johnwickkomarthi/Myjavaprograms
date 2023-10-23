@@ -1,0 +1,33 @@
+package com.easyRentals.customer;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Optional;
+
+import com.easyRentals.models.Bike;
+
+public class PrivalegedCustomer extends Customer{
+	
+	
+	public PrivalegedCustomer(int id, String name, LocalDate dob, String custType, String gender, String contact,
+			Optional<String> email, ZoneId zone, String country) {
+		super(id, name, dob, "ER"+custType, gender, contact, email, zone, country);
+	}
+
+	public double calculateRentalPrice(Bike bike) {
+		return bike.getRentalPrice()*this.calculateDiscount();
+	}
+	
+	public double calculateDiscount() {
+		LocalDate currentDate = LocalDate.now();
+        Period period = Period.between(this.getRegestrationDate(), currentDate);
+        int yearsRegistered = period.getYears();
+        
+        if (yearsRegistered > 5) {
+            return 0.9; // 10% discount
+        } else {
+            return 1;
+        }
+	}
+}
