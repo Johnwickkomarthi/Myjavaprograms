@@ -1,0 +1,121 @@
+package com.easyRentals.customer;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class Customer {
+	public int id;
+	public String name;
+	private LocalDate dob;
+	private String custType;
+	private String gender;
+	private String contact;
+	private String email;
+	private LocalDate regestrationDate;
+	private String country;
+	public Customer(int id, String name, LocalDate dob, String custType, String gender, String contact, Optional<String> email,
+			ZoneId zone, String country) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dob = dob;
+		this.custType = custType;
+		this.gender = gender;
+		this.contact = contact;
+		this.email = email.orElse(null);
+		this.regestrationDate = LocalDate.now(zone);
+		this.country = country;
+	}
+	public LocalDate getDob() {
+		return dob;
+	}
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
+	}
+	public String getCustType() {
+		return custType;
+	}
+	public void setCustType(String custType) {
+		this.custType = custType;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getContact() {
+		return contact;
+	}
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public LocalDate getRegestrationDate() {
+		return regestrationDate;
+	}
+	public void setRegestrationDate(LocalDate regestrationDate) {
+		this.regestrationDate = regestrationDate;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public double calculateRentalPrice() {
+		return 0;
+	}
+	
+	
+	public static void getListOfCustomers(ArrayList<Customer> customerList){
+		Collections.sort(customerList, Comparator.comparing(Customer::getDob));
+		for (Customer customer : customerList) {
+            System.out.println("ID: " + customer.id);
+            System.out.println("Name: " + customer.name);
+            System.out.println("DOB: " + customer.getDob());
+            System.out.println("Customer Type: " + customer.getCustType());
+            System.out.println("Gender: " + customer.getGender());
+            System.out.println("Contact: " + customer.getContact());
+            System.out.println("Email: " + customer.getEmail());
+            System.out.println("Registration Date: " + customer.getRegestrationDate());
+            System.out.println("Country: " + customer.getCountry());
+            System.out.println("--------------------------------------");
+        }
+	}
+	
+//	filters
+	public List<Customer> filterOnCustmerTypeAndAge(String custType, int age,ArrayList<Customer> customerList) {
+		List<Customer> regularCustomersAboveAge = customerList.stream()
+                .filter(customer -> customer.getCustType().equals(custType) && customer.getDob().plusYears(age).isBefore(LocalDate.now()))
+                .collect(Collectors.toList());
+		
+		return regularCustomersAboveAge;
+	}
+	public long filterBasedOnAge(int age,List<Customer> customerList) {
+		long customersAgePlusCount = customerList.stream()
+                .filter(customer -> customer.getDob().plusYears(50).isBefore(LocalDate.now()))
+                .count();
+		return customersAgePlusCount;
+	}
+	
+	public List<Customer> filterOnCustTypeAndCountry(String custType, String country, List<Customer> customerList){
+		return customerList.stream()
+                .filter(customer -> customer.getCustType().equals(custType) && customer.getCountry().equalsIgnoreCase(country))
+                .collect(Collectors.toList());
+		
+	}
+	
+	
+}
